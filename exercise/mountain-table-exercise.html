@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>Mountains</h1>
+
+<div id="mountains"></div>
+
+<script>
+  const MOUNTAINS = [
+    {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+    {name: "Everest", height: 8848, place: "Nepal"},
+    {name: "Mount Fuji", height: 3776, place: "Japan"},
+    {name: "Vaalserberg", height: 323, place: "Netherlands"},
+    {name: "Denali", height: 6168, place: "United States"},
+    {name: "Popocatepetl", height: 5465, place: "Mexico"},
+    {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+  ];
+
+
+    const table = document.createElement('table');
+    table.style.width = "600px";
+    table.style.border = "1px solid";
+    const headerRow = document.createElement('tr');
+    headerRow.style.border = "1px solid";
+    
+    
+    const TH = ["name","height","place"];
+
+    for (el of TH) {
+        const temp = document.createElement('th');
+        temp.innerText = el;
+        temp.style.border = "1px solid";
+        headerRow.appendChild(temp);
+    }
+
+    table.appendChild(headerRow);
+
+
+
+    for(mountain of MOUNTAINS) {
+        const row = document.createElement('tr');
+        for(property in mountain) {
+            const td = document.createElement('td');
+            td.style.border = "1px solid";
+            td.innerText = mountain[property];
+            row.appendChild(td);
+        }
+        row.style.border = "1px solid";
+        table.appendChild(row);
+    }
+
+    const div = document.querySelector("#mountains");
+    div.appendChild(table);
+
+    const tds = document.querySelectorAll('td');
+    
+    for(val of tds) {
+        if(!isNaN(val.innerText)) {
+            val.style.textAlign = "right";
+        }
+    }
+
+</script>
+</body>
+</html>
